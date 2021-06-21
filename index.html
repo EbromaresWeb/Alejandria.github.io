@@ -135,7 +135,7 @@
         const provider = new firebase.auth.GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account"});
         auth.onAuthStateChanged(
-        usuarioAuth =>{
+        usuarioAuth => {
           if (usuarioAuth && usuarioAuth.email){
             email.value = usuarioAuth.email;
             nombre.value = usuarioAuth.displayName;
