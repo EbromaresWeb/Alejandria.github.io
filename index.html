@@ -31,5 +31,45 @@
       <legend> Nombre </legend>
       <outpu id="nombre"></output>
       </fieldset>
+    <button type="button" onclick="terminaSesión()"> TErminar Sesion </button>
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="https://www.linkedin.com/in/mario-jafet-ebromares-fuentes-a2b023197/">
+                    <h1 class="logo__nombre no-margin centrar-texto">Mario<span class="logo__bold">Ebromares</span></h1>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const auth = firebase.auth();
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: "select_account"});
+        auth.onAuthStateChanged(
+        usuarioAuth =>{
+          if (usuarioAuth && usuarioAuth.email){
+            email.value = usuarioAuth.email;
+            nombre.value = usuarioAuth.displayName;
+            avatar.src = usuarioAuth.photoURL;
+          }
+          else{
+            auth.signInWithRedirect(provider);
+          }
+        },
+          );
+      async function terminaSesión(){
+        try{
+            await auth.signOut();
+        } catch (e){
+            procesaError(e);
+        }
+      }
+      function procesaError(e){
+          console.log(e);
+          alert(e.message);
+      }
+    </script>
+          
+      
   </body>
 </html>
