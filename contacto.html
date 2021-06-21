@@ -34,17 +34,16 @@
 
     <main class="contenedor">
         <h3 class="centrar-texto">Contacto</h3>
-<br>
-        <br>
-        <h1>Chat</h1>
-        <
+
+        <h1>Chat en vivo</h1>
+        
             
             <form action="javascript:agrega();">
       <input id="texto" type="text" required placeholder="Mensaje">
       <button>Enviar</button>
     </form>
-    <ol id="mensajes"><li><progress max="100">Cargando…</progress></li></ol>
-        </div>
+
+      
     <script>
       // @ts-check
       /** Nombre de usuario autenticado por Firebase. */
@@ -86,7 +85,7 @@
          * "USUARIO", "TEXTO" y "TIMESTAMP" son los nombres de los campos en el
          * documento.
          * El timestamp contiene la fecha y hora en que se agrega el registro.*/
-        firestore.collection("MENSAJE").add({
+        firestore.collection("ChatHoy").add({
           USUARIO: usuario,
           // @ts-ignore
           TEXTO: texto.value.trim(),
@@ -100,7 +99,7 @@
         /* Consulta que se actualiza automáticamente. Pide todos los registros
          * de la colección "MENSAJE" ordenador por el campo "TIMESTAMP" de forma
          * descendiente. */
-        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc")
+        firestore.collection("ChatHoy").orderBy("TIMESTAMP", "desc")
           .onSnapshot(
             /** Función que muestra los datos enviados por el servidor. Si los
              * datos cambian en el servidor, se vuelve a invocar esta función y
