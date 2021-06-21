@@ -87,7 +87,7 @@
          * "USUARIO", "TEXTO" y "TIMESTAMP" son los nombres de los campos en el
          * documento.
          * El timestamp contiene la fecha y hora en que se agrega el registro.*/
-        firestore.collection("ChatHoy").add({
+        firestore.collection("MENSAJE").add({
           USUARIO: usuario,
           // @ts-ignore
           TEXTO: texto.value.trim(),
@@ -101,7 +101,7 @@
         /* Consulta que se actualiza automáticamente. Pide todos los registros
          * de la colección "MENSAJE" ordenador por el campo "TIMESTAMP" de forma
          * descendiente. */
-        firestore.collection("ChatHoy").orderBy("TIMESTAMP", "desc")
+        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc")
           .onSnapshot(
             /** Función que muestra los datos enviados por el servidor. Si los
              * datos cambian en el servidor, se vuelve a invocar esta función y
